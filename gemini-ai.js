@@ -1,14 +1,13 @@
 // Gemini AI Integration Module
 
 class GeminiAI {
-    constructor(apiKey) {
-        this.apiKey = apiKey;
-        this.apiUrl = typeof CONFIG !== 'undefined' && CONFIG.GEMINI_API_URL ? CONFIG.GEMINI_API_URL : 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
+    constructor() {
+        this.apiUrl = '/api/generateContent';
     }
 
     async analyzeNutrition(mealDescription) {
         try {
-            const response = await fetch(`${this.apiUrl}?key=${this.apiKey}`, {
+            const response = await fetch(this.apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -62,7 +61,7 @@ Provide recommendations in JSON format:
 
 Focus on: meal timing, macro balance, hydration, food variety, and goal alignment.`;
 
-            const response = await fetch(`${this.apiUrl}?key=${this.apiKey}`, {
+            const response = await fetch(this.apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -100,7 +99,7 @@ Focus on: meal timing, macro balance, hydration, food variety, and goal alignmen
 Include Indian and international options. Return JSON:
 [{"name": "meal name", "calories": number, "protein": number, "description": "brief description"}]`;
 
-            const response = await fetch(`${this.apiUrl}?key=${this.apiKey}`, {
+            const response = await fetch(this.apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -129,4 +128,4 @@ Include Indian and international options. Return JSON:
 }
 
 // Initialize Gemini AI
-const geminiAI = new GeminiAI(CONFIG.GEMINI_API_KEY);
+const geminiAI = new GeminiAI();
