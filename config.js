@@ -1,8 +1,5 @@
 // Configuration file for NutriSmart
 const CONFIG = {
-    // Gemini AI Configuration
-    GEMINI_API_KEY: 'AIzaSyCptTsCtdcCwwyrJwp6RCiwGa23NPzHugY',
-    GEMINI_API_URL: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent',
     
     // Gamification Settings
     POINTS: {
