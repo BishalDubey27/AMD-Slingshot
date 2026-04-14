@@ -3,7 +3,7 @@
 class GeminiAI {
     constructor(apiKey) {
         this.apiKey = apiKey;
-        this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+        this.apiUrl = typeof CONFIG !== 'undefined' && CONFIG.GEMINI_API_URL ? CONFIG.GEMINI_API_URL : 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
     }
 
     async analyzeNutrition(mealDescription) {
