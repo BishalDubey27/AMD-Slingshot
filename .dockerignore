@@ -1,0 +1,20 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+plan.md
+PITCH.md
+TECHNICAL.md
+DEMO-GUIDE.md
+FEATURES.md
+PROJECT-SUMMARY.md
+WORKFLOW.md
+
+# Development files
+.vscode
+.idea
+*.log
+node_modules
+npm-debug.log*

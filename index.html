@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriSmart - AI-Powered Food & Health Companion</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-enhanced.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1>🥗 NutriSmart</h1>
+                    <p class="tagline">AI-Powered Food & Health Companion</p>
+                </div>
+                <div class="header-actions">
+                    <button onclick="tutorial && tutorial.restart()" class="btn-icon" title="Restart Tutorial">
+                        <span>❓</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tabs">
+            <button class="tab active" onclick="app.switchTab('home')">
+                <span class="tab-icon">🏠</span>
+                <span class="tab-label">Home</span>
+            </button>
+            <button class="tab" onclick="app.switchTab('dashboard')">
+                <span class="tab-icon">📊</span>
+                <span class="tab-label">Dashboard</span>
+            </button>
+            <button class="tab" onclick="app.switchTab('achievements')">
+                <span class="tab-icon">🏆</span>
+                <span class="tab-label">Achievements</span>
+            </button>
+            <button class="tab" onclick="app.switchTab('history')">
+                <span class="tab-icon">📅</span>
+                <span class="tab-label">History</span>
+            </button>
+        </nav>
+
+        <main>
+            <!-- Home Tab -->
+            <div id="homeTab" class="tab-content active">
+                <!-- Gamification Panel -->
+                <section class="gamification-panel" id="gamificationPanel">
+                    <div class="level-card">
+                        <div class="level-info">
+                            <div class="level-badge">
+                                <span class="level-number" id="levelNumber">1</span>
+                            </div>
+                            <div class="level-details">
+                                <div class="level-name" id="levelName">Beginner</div>
+                                <div class="level-points" id="levelPoints">0 pts</div>
+                            </div>
+                        </div>
+                        <div class="level-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="levelProgress" style="width: 0%"></div>
+                            </div>
+                            <div class="progress-label" id="progressLabel">0 / 100 to next level</div>
+                        </div>
+                    </div>
+                    
+                    <div class="streak-card">
+                        <div class="streak-icon">🔥</div>
+                        <div class="streak-info">
+                            <div class="streak-number" id="streakNumber">0</div>
+                            <div class="streak-label">Day Streak</div>
+                        </div>
+                    </div>
+                    
+                    <div class="badges-preview">
+                        <h4>Recent Badges</h4>
+                        <div class="badges-list" id="badgesList">
+                            <div class="no-badges">Complete challenges to earn badges!</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Goal Section -->
+                <section class="goal-section" id="goalSection">
+                    <h2>Your Health Goals</h2>
+                    <div id="goalDisplay" class="goal-display"></div>
+                    <button onclick="app.showGoalModal()" class="btn-primary">Set Goals</button>
+                </section>
+
+                <!-- Meal Input -->
+                <section class="meal-input">
+                    <h2>Log Your Meal</h2>
+                    <div class="input-group">
+                        <input type="text" id="mealInput" placeholder="What did you eat? (e.g., chicken biryani, 2 idlis)" />
+                        <button onclick="app.logMeal()" class="btn-primary">Log Meal</button>
+                    </div>
+                    <div class="ai-badge">
+                        <span class="ai-icon">✨</span>
+                        <span>Powered by Gemini AI</span>
+                    </div>
+                </section>
+
+                <!-- Insights -->
+                <section class="insights">
+                    <h2>Today's Insights</h2>
+                    <div id="insightsDisplay" class="insights-grid"></div>
+                </section>
+
+                <!-- AI Recommendations -->
+                <section class="recommendations">
+                    <h2>Smart Recommendations</h2>
+                    <div id="recommendationsDisplay" class="recommendations-list"></div>
+                </section>
+
+                <!-- Recent Meals -->
+                <section class="meal-history">
+                    <h2>Recent Meals</h2>
+                    <div id="mealHistory" class="meal-list"></div>
+                </section>
+            </div>
+
+            <!-- Dashboard Tab -->
+            <div id="dashboardTab" class="tab-content">
+                <h2>📊 Your Dashboard</h2>
+                <div id="dashboardContent"></div>
+            </div>
+
+            <!-- Achievements Tab -->
+            <div id="achievementsTab" class="tab-content">
+                <h2>🏆 Achievements</h2>
+                <div class="achievements-container">
+                    <div class="achievements-stats">
+                        <div class="stat-card">
+                            <div class="stat-value" id="totalBadges">0</div>
+                            <div class="stat-label">Badges Earned</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="totalPoints">0</div>
+                            <div class="stat-label">Total Points</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="currentLevel">1</div>
+                            <div class="stat-label">Current Level</div>
+                        </div>
+                    </div>
+                    
+                    <div class="badges-grid" id="allBadges"></div>
+                </div>
+            </div>
+
+            <!-- History Tab -->
+            <div id="historyTab" class="tab-content">
+                <h2>📅 Meal History</h2>
+                <div class="history-filters">
+                    <button class="filter-btn active" onclick="app.filterHistory('all')">All</button>
+                    <button class="filter-btn" onclick="app.filterHistory('today')">Today</button>
+                    <button class="filter-btn" onclick="app.filterHistory('week')">This Week</button>
+                    <button class="filter-btn" onclick="app.filterHistory('month')">This Month</button>
+                </div>
+                <div id="historyContent" class="history-list"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Goal Modal -->
+    <div id="goalModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="app.closeGoalModal()">&times;</span>
+            <h2>Set Your Health Goals</h2>
+            <form id="goalForm">
+                <label>Primary Goal:</label>
+                <select id="primaryGoal">
+                    <option value="weight_loss">Weight Loss</option>
+                    <option value="muscle_gain">Muscle Gain</option>
+                    <option value="maintain">Maintain Health</option>
+                    <option value="energy">Increase Energy</option>
+                </select>
+                
+                <label>Daily Calorie Target:</label>
+                <input type="number" id="calorieTarget" placeholder="2000" />
+                
+                <label>Dietary Preferences:</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" value="vegetarian" /> Vegetarian</label>
+                    <label><input type="checkbox" value="vegan" /> Vegan</label>
+                    <label><input type="checkbox" value="low_carb" /> Low Carb</label>
+                    <label><input type="checkbox" value="high_protein" /> High Protein</label>
+                </div>
+                
+                <button type="submit" class="btn-primary">Save Goals</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Analyzing with AI...</div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="gemini-ai.js"></script>
+    <script src="gamification.js"></script>
+    <script src="tutorial.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="app-v2.js"></script>
+</body>
+</html>

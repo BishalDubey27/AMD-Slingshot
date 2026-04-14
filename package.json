@@ -1,0 +1,31 @@
+{
+  "name": "nutrismart",
+  "version": "1.0.0",
+  "description": "AI-powered food and health companion for better nutrition choices",
+  "main": "app.js",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx serve .",
+    "deploy": "bash deploy.sh",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "nutrition",
+    "health",
+    "food",
+    "ai",
+    "wellness",
+    "tracking",
+    "diet"
+  ],
+  "author": "AMD Slingshot Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/AMD-Slingshot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/AMD-Slingshot/issues"
+  },
+  "homepage": "https://github.com/yourusername/AMD-Slingshot#readme"
+}
